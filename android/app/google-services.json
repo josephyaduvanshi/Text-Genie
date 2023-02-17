@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1051888660791",
+    "project_id": "textgenie",
+    "storage_bucket": "textgenie.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1051888660791:android:7689f88c1d73acf0a86ab2",
+        "android_client_info": {
+          "package_name": "com.joseph.textgenie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1051888660791-8vuguru06vr0qc1ool4lue3ulolmlsb8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrx1C1kVoXG_lnMs5s0gv45WpCWBE7GIw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1051888660791-8vuguru06vr0qc1ool4lue3ulolmlsb8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
