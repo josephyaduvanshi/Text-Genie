@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:textgenie/gen/assets.gen.dart';
 import 'package:textgenie/src/models/tools_specifiers_model.dart';
 import 'package:textgenie/src/pages/menu/custom_menu_page.dart';
+import 'package:textgenie/src/routes/route_names.dart';
 
 class HomePageConstants {
   static final List<String> tabsName = [
@@ -36,7 +38,9 @@ class HomePageConstants {
       imageAsset: Assets.images.emailToUser.path,
       isAvailable: true,
       isBeta: false,
-      onTap: () {},
+      onTap: () async {
+        await Get.toNamed(RouteNames.emailToUserPage);
+      },
     ),
     ToolSpecifierModel(
       name: "Combo Extractor",
@@ -116,7 +120,9 @@ class HomePageConstants {
       imageAsset: Assets.images.sort.path,
       isAvailable: true,
       isBeta: false,
-      onTap: () {},
+      onTap: () {
+        Get.toNamed(RouteNames.sortTextPage);
+      },
     ),
     ToolSpecifierModel(
       name: "Sort Text",
@@ -1133,72 +1139,6 @@ class HomePageConstants {
             .toList(),
       ),
       2: CustomMenuPage(
-          itemCount: homePageItems
-              .where(
-                (element) => element.type == ToolSpecifierType.textManipulation,
-              )
-              .length,
-          homePageItems: homePageItems
-              .where(
-                (element) => element.type == ToolSpecifierType.textManipulation,
-              )
-              .toList()),
-      3: CustomMenuPage(
-          itemCount: homePageItems
-              .where(
-                (element) => element.type == ToolSpecifierType.textFormat,
-              )
-              .length,
-          homePageItems: homePageItems
-              .where(
-                (element) => element.type == ToolSpecifierType.textFormat,
-              )
-              .toList()),
-      4: CustomMenuPage(
-          itemCount: homePageItems
-              .where(
-                (element) => element.type == ToolSpecifierType.textCleaners,
-              )
-              .length,
-          homePageItems: homePageItems
-              .where(
-                (element) => element.type == ToolSpecifierType.textCleaners,
-              )
-              .toList()),
-      5: CustomMenuPage(
-          itemCount: homePageItems
-              .where(
-                (element) => element.type == ToolSpecifierType.unicode,
-              )
-              .length,
-          homePageItems: homePageItems
-              .where(
-                (element) => element.type == ToolSpecifierType.unicode,
-              )
-              .toList()),
-      6: CustomMenuPage(
-          itemCount: homePageItems
-              .where(
-                (element) => element.type == ToolSpecifierType.scraping,
-              )
-              .length,
-          homePageItems: homePageItems
-              .where(
-                (element) => element.type == ToolSpecifierType.scraping,
-              )
-              .toList()),
-      7: CustomMenuPage(
-          itemCount: homePageItems
-              .where(
-                (element) => element.type == ToolSpecifierType.hashTools,
-              )
-              .length,
-          homePageItems: homePageItems
-              .where(
-                (element) => element.type == ToolSpecifierType.hashTools,
-              )
-              .toList()),
-      8: CustomMenuPage(
         itemCount: homePageItems
             .where(
               (element) => element.type == ToolSpecifierType.comboTools,
@@ -1210,6 +1150,73 @@ class HomePageConstants {
             )
             .toList(),
       ),
+      3: CustomMenuPage(
+        itemCount: homePageItems
+            .where(
+              (element) => element.type == ToolSpecifierType.textManipulation,
+            )
+            .length,
+        homePageItems: homePageItems
+            .where(
+              (element) => element.type == ToolSpecifierType.textManipulation,
+            )
+            .toList(),
+      ),
+      4: CustomMenuPage(
+          itemCount: homePageItems
+              .where(
+                (element) => element.type == ToolSpecifierType.textFormat,
+              )
+              .length,
+          homePageItems: homePageItems
+              .where(
+                (element) => element.type == ToolSpecifierType.textFormat,
+              )
+              .toList()),
+      5: CustomMenuPage(
+          itemCount: homePageItems
+              .where(
+                (element) => element.type == ToolSpecifierType.textCleaners,
+              )
+              .length,
+          homePageItems: homePageItems
+              .where(
+                (element) => element.type == ToolSpecifierType.textCleaners,
+              )
+              .toList()),
+      6: CustomMenuPage(
+          itemCount: homePageItems
+              .where(
+                (element) => element.type == ToolSpecifierType.unicode,
+              )
+              .length,
+          homePageItems: homePageItems
+              .where(
+                (element) => element.type == ToolSpecifierType.unicode,
+              )
+              .toList()),
+      7: CustomMenuPage(
+          itemCount: homePageItems
+              .where(
+                (element) => element.type == ToolSpecifierType.scraping,
+              )
+              .length,
+          homePageItems: homePageItems
+              .where(
+                (element) => element.type == ToolSpecifierType.scraping,
+              )
+              .toList()),
+      8: CustomMenuPage(
+          itemCount: homePageItems
+              .where(
+                (element) => element.type == ToolSpecifierType.hashTools,
+              )
+              .length,
+          homePageItems: homePageItems
+              .where(
+                (element) => element.type == ToolSpecifierType.hashTools,
+              )
+              .toList()),
       9: CustomMenuPage(
           itemCount: homePageItems
               .where(

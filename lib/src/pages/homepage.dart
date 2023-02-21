@@ -18,7 +18,7 @@ class HomePage extends GetView<HomePageController> {
         title: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            'Text Genie'.text.bold.make().pOnly(right: 46).shimmer(
+            'Text Genie'.text.bold.make().pOnly(right: 38).shimmer(
                   duration: 4.seconds,
                   primaryColor: Colors.purple,
                   secondaryColor: Colors.blue,

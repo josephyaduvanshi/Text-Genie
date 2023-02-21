@@ -13,4 +13,5 @@ class RouteNames {
   static const String hashCrackerPage = '/hashCrackerPage';
   static const String textSplitterPage = '/textSplitterPage';
   static const String randomComboGeneratorPage = '/randomComboGeneratorPage';
+  static const String sortTextPage = '/sortTextPage';
 }

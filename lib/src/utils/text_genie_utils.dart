@@ -7,14 +7,16 @@ import 'package:csv/csv.dart';
 import 'package:dart_style/dart_style.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:xml/xml.dart';
 import 'package:xml2json/xml2json.dart';
 import 'package:yaml/yaml.dart';
-
+import 'package:intl/intl.dart';
 import '../widgets/custom_snackbar.dart';
 
 class TextGenieUtils {
+  static DateFormat _formatTime = DateFormat("HH:mm a");
   static String getInitials(String name) {
     if (name.isEmpty) {
       return '';
@@ -25,6 +27,25 @@ class TextGenieUtils {
     }
     return names[0].substring(0, 1).toUpperCase() +
         names[1].substring(0, 1).toUpperCase();
+  }
+
+  static String getPrettyDate(final a) {
+    if (a == null) {
+      return '';
+    }
+    return "${DateTime.tryParse(a.toString()).toString().toDateString()}, ${DateTime.tryParse(a.toString())!.year}";
+  }
+
+  static String getPrettyDateTimeAgo(final a) {
+    return DateTime.parse(a.toString()).timeAgo();
+  }
+
+  static String getPrettyDateWithTime(final a) {
+    return "${DateTime.parse(a.toString()).toString().toDateString()}, ${DateTime.parse(a.toString()).year} ${_formatTime.format(DateTime.parse(DateTime.parse(a.toString()).toLocal().toString())).toString()}";
+  }
+
+  static String getPrettyDateWithTimeAgo(final date) {
+    return "${getPrettyDate(date.toString())} (${DateTime.parse(date.toString()).timeAgo()})";
   }
 
   static String getInitialsFromEmail(String email) {
@@ -96,13 +117,17 @@ class TextGenieUtils {
     if (n < 1024) {
       return '$n B';
     }
-    Map<int, String> prefixes = {3: 'KB', 6: 'MB', 9: 'GB', 12: 'TB'};
-    for (int i in prefixes.keys) {
-      if (n < pow(1024, i + 1)) {
-        return "${(n / pow(1024, i)).toStringAsFixed(1)}${prefixes[i]}";
-      }
-    }
-    return n.toString();
+    final prefixes = {0: 'B', 1: 'KB', 2: 'MB', 3: 'GB', 4: 'TB'};
+    final exp = (log(n) / log(1024)).floor();
+    final size = (n / pow(1024, exp)).toStringAsFixed(1);
+    return '$size ${prefixes[exp]}';
+  }
+
+  static Future<void> copyToClipBoard(String text) async {
+    await Clipboard.setData(ClipboardData(text: text));
+    ShowSnackBar.snackSuccess(
+        title: " Copied to Clipboard ",
+        sub: "Text Copid to Clipboard Successfully!");
   }
 
   static String jsPrettify(String jsCode) {
@@ -286,6 +311,7 @@ class TextGenieUtils {
     } on SocketException catch (_) {
       return 'Failed to get public IP address';
     }
+    return null;
   }
 }
 

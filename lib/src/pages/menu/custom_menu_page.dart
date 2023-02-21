@@ -24,7 +24,7 @@ class CustomMenuPage extends StatelessWidget {
       ),
       itemBuilder: (context, index) => GridTile(
         child: CustomGridTile(
-          onTap: () {},
+          onTap: homePageItems[index].onTap,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
